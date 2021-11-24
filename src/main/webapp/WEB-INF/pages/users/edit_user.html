@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать</title>
+</head>
+<body>
+
+<form th:method="patch" th:action="@{/admin/edit_user(id=${user.getId()})}" th:object="${user}">
+    <p>
+        <label for="name">Имя: </label>
+        <input type="text" th:field="*{name}" id="name"/>
+    </p>
+    <p>
+        <label for="surname">Фамилия: </label>
+        <input type="text" th:field="*{surname}" id="surname"/>
+    </p>
+    <p>
+        <label for="age">Возраст: </label>
+        <input type="text" th:field="*{age}" id="age"/>
+    </p>
+    <p>
+        <label for="email">Email:</label>
+        <input type="text" th:field="*{email}" id="email"/>
+    </p>
+
+    <p>
+        <label for="pass">Пароль:</label>
+        <input type="password" th:field="*{pass}" id="pass"/>
+    </p>
+
+    <p>
+        <label for="enabled">Enabled:</label>
+        <input type="checkbox" th:field="*{enabled}" id="enabled"/>
+    </p>
+    <p>Roles: </p>
+    <th:block th:each="role: ${listRoles}">
+        <input type="checkbox" th:field="*{roles}"
+               th:text="${role.name}" th:value="${role}"/>
+    </th:block>
+
+    <input type="submit" value="Обновить"/>
+</form>
+<h4><a href="/logout">Log out</a></h4>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <h2>Привет, <th:block th:text="${curUser.getUsername()}"/>!</h2>
+<br>
+    <table th:border="1">
+
+        <tr th:border="1">
+            <td th:text="Id"/>
+            <td th:text="Name"/>
+            <td th:text="Surname"/>
+            <td th:text="Age"/>
+            <td th:text="Email"/>
+
+        </tr>
+        <tr>
+            <td th:text="${curUser.getId()}"/>
+            <td th:text="${curUser.getName()}"/>
+            <td th:text="${curUser.getSurname()}"/>
+            <td th:text="${curUser.getAge()}"/>
+            <td th:text="${curUser.getEmail()}"/>
+        </tr>
+    </table>
+</body>
+
+<p><a href="/">На главную страницу</a></p>
+<br/>
+<p><a href="/logout">Log out</a></p>
+</html>

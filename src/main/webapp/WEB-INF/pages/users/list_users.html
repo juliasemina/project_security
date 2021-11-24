@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+</head>
+<body>
+
+<br>
+<p>Найти пользователя по id</p>
+<form th:action="@{/admin/open_user}" method="get">
+    <input type="text" name="id" id="id"/>
+    <input type="submit" value="Найти"/>
+</form>
+
+<p>
+    <a href="/admin/add_user">Добавить нового пользователя</a>
+</p>
+<div>
+    <table th:border="1">
+        <tr th:border="1">
+            <td th:text="Id"/>
+            <td th:text="Name"/>
+            <td th:text="Surname"/>
+            <td th:text="Roles"/>
+            <td th:text="Action"/>
+
+        </tr>
+        <th:block th:each="user : ${users}">
+            <tr>
+                <td th:text="${user.getId()}"/>
+                <td th:text="${user.getName()}"/>
+                <td th:text="${user.getSurname()}"/>
+                <td th:text="${user.getRoles()}"/>
+                <td th:cellpadding="5">
+                    <a th:href="@{/admin/open_user(id=${user.getId()})}">Открыть</a>
+                    &nbsp;
+                    <a th:href="@{/admin/edit_user(id=${user.getId()})}">Редактировать</a>&nbsp;
+                    &nbsp;
+                    <a th:href="@{/admin/delete(id=${user.getId()})}">Удалить</a>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+
+
+    <p><a href="/">На главную страницу</a></p>
+    <br/>
+    <p><a href="/logout">Log out</a></p>
+</div>
+<br/>
+</body>
+</html>

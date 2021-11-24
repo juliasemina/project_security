@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о пользователе</title>
+</head>
+<body>
+
+<table th:border="1">
+
+    <tr th:border="1">
+        <td th:text="Id"/>
+        <td th:text="Name"/>
+        <td th:text="Surname"/>
+        <td th:text="Age"/>
+        <td th:text="Email"/>
+        <td th:text="Roles"/>
+
+    </tr>
+        <tr>
+            <td th:text="${user.getId()}"/>
+            <td th:text="${user.getName()}"/>
+            <td th:text="${user.getSurname()}"/>
+            <td th:text="${user.getAge()}"/>
+            <td th:text="${user.getEmail()}"/>
+            <td th:text="${user.getRoles()}"/>
+        </tr>
+</table>
+
+<p>Enabled</p>
+<input type="checkbox" th:field="${user.enabled}" th:value="${user.enabled}" th:disabled="true"/>
+<br>
+<br>
+<a href="/">На главную</a>
+<br>
+<h4><a href="/logout">Log out</a></h4>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:security="" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Приветствие</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <div sec:authorize="isAuthenticated()">
+    <h2> Добро пожаловать</h2>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <p>Найти пользователя по id</p>
+        <form th:action="@{/admin/open_user}" method="get">
+            <input type="text" name="id" id="id"/>
+            <input type="submit" value="Найти"/>
+        </form>
+
+        <p><a href="/admin/list_users">Для администратора</a></p>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
+        <p>
+            <a href="/hello_user">Страница пользователя</a>
+        </p>
+    </div>
+    <h4><a href="/logout">Log out</a></h4>
+
+</div>
+</body>
+</html>
